@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MB01.A1_2
+﻿namespace MB01.A1_2
 {
     public partial class A1_2_5 : Form
     {
@@ -17,9 +7,9 @@ namespace MB01.A1_2
             InitializeComponent();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void CmdCalc_Click(object sender, EventArgs e)
         {
-            LblResultat.Text =Convert.ToString( Convert.ToInt32(Cmd8.Text+Cmd7.Text + Cmd6.Text + Cmd5.Text + Cmd4.Text + Cmd3.Text + Cmd2.Text + Cmd1.Text, 2));
+            LblResultat.Text = Convert.ToString(Convert.ToInt32(Cmd8.Text + Cmd7.Text + Cmd6.Text + Cmd5.Text + Cmd4.Text + Cmd3.Text + Cmd2.Text + Cmd1.Text, 2));
         }
 
         private void CmdLeer_Click(object sender, EventArgs e)

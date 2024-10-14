@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace MB01.A2_1
+﻿namespace MB01.A2_1
 {
     public partial class A2_1_1 : Form
     {

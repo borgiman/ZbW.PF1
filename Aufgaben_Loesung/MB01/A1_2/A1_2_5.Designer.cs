@@ -130,7 +130,7 @@
             this.CmdCalc.TabIndex = 8;
             this.CmdCalc.Text = "Berechne Dezimalwert";
             this.CmdCalc.UseVisualStyleBackColor = true;
-            this.CmdCalc.Click += new System.EventHandler(this.button9_Click);
+            this.CmdCalc.Click += new System.EventHandler(this.CmdCalc_Click);
             // 
             // LblResultat
             // 
