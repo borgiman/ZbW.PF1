@@ -1,0 +1,32 @@
+﻿namespace MB07.TiermarktBeispiel
+{
+    public class Dog
+    {
+        private int _age;
+
+        public string Name { get; set; }
+
+        public int Age
+        {
+            get { return _age; }
+            set
+            {
+                if (value >= 0)
+                {
+                    _age = value;
+                }
+            }
+        }
+
+        public bool Equals(Dog other)
+        {
+            if (other == null) return false;
+            if (Name == other.Name &&
+                Age == other.Age)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MB04.ArrayUebung
+{
+    public partial class ArrayUebung_1 : Form
+    {
+        public ArrayUebung_1()
+        {
+            InitializeComponent();
+            _data = new int[_dataLength];
+            _dataCounter = 0;
+        }
+
+        private const int _dataLength = 2;
+
+        private int _dataCounter;
+        private int[] _data;
+
+        private void CmdAdd_Click(object sender, EventArgs e)
+        {
+            if(_dataCounter < _data.Length)
+            {
+                _data[_dataCounter++] = Convert.ToInt32(NumNumberToAdd.Value);
+            }
+        }
+
+        private void CmdPrint_Click(object sender, EventArgs e)
+        {
+            TxtShowNumbers.Text = string.Empty;
+
+            foreach (int element in _data)
+            {
+                TxtShowNumbers.Text += element + "\r\n";
+            }
+        }
+
+        private void CmdRemove_Click(object sender, EventArgs e)
+        {
+            int numberToRemove =  Convert.ToInt32(NumNumberToRemove.Value);
+            int indexOfNumber = Array.IndexOf(_data, numberToRemove);
+            if(indexOfNumber != -1)
+            {
+                _data[indexOfNumber] = 0;
+            }
+        }
+    }
+}

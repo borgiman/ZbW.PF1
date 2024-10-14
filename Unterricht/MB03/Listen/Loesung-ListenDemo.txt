@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MB03.Listen
+{
+    public partial class ListenDemo : Form
+    {
+        public ListenDemo()
+        {
+            InitializeComponent();
+        }
+       
+        private Random random = new Random();
+        private const int Length = 5;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Length; i++)
+            {
+                int num = random.Next(1, 1000);
+                LstNum.Items.Add(num);
+                CmbNum.Items.Add(num);
+
+            }
+        }
+
+        private void CmdAdd_Click(object sender, EventArgs e)
+        {
+            if (CmbNum.SelectedIndex==-1)
+            {
+                if (CmbNum.Text.Length > 0)
+                {
+                    CmbNum.Items.Add(CmbNum.Text);
+                    LstNum.Items.Add(CmbNum.Text);
+                }
+                else
+                {
+                    string message = "Wollen Sie wirklich ein leeres Element hinzufügen?";
+                    string caption = "Leeres Element hinzufügen";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                    if (result == DialogResult.Yes)
+                    {
+                        CmbNum.Items.Add(CmbNum.Text);
+                    }
+                }
+            }
+
+        }
+
+        private void CmdRemove_Click(object sender, EventArgs e)
+        {
+            var itemToRemove = CmbNum.SelectedItem;
+            CmbNum.Items.Remove(itemToRemove);
+            LstNum.Items.Remove(itemToRemove);
+        }
+
+        private void CmdShowListbox_Click(object sender, EventArgs e)
+        {
+            TxtShowListbox.Text = string.Empty;
+
+            for (int i = 0; i < LstNum.Items.Count; i++)
+            {
+
+                TxtShowListbox.Text += LstNum.Items[i].ToString() + "\r\n";
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+﻿namespace MB07.TiermarktBeispiel
+{
+    public partial class Tiermarkt : Form
+    {
+        public Tiermarkt()
+        {
+            InitializeComponent();
+            LstPerson.DisplayMember = "Name";
+            LstDog.DisplayMember = "Name";
+
+        }
+
+        private void CmdCreatePerson_Click(object sender, EventArgs e)
+        {
+            var p = new Person() { Name = TxtNamePerson.Text };
+            if (IsPersonDouble(LstPerson.Items, p))
+            {
+                MessageBox.Show("Hund wurde schon erfasst");
+            }
+            else
+            {
+                LstPerson.Items.Add(p);
+            }
+        }
+
+        private void CmdCreateDog_Click(object sender, EventArgs e)
+        {
+            var dog = new Dog() { Name = TxtNameDog.Text, Age = Convert.ToInt32(NumAgeDog.Value) };
+            if (IsDogDouble(LstDog.Items, dog))
+            {
+                MessageBox.Show("Hund wurde schon erfasst");
+            }
+            else
+            {
+                LstDog.Items.Add(dog);
+            }
+        }
+
+        private bool IsPersonDouble(ListBox.ObjectCollection list, Person newPerson)
+        {
+            foreach (var item in list)
+            {
+                Person person = item as Person;
+                if (person != null)
+                {
+                    if (newPerson.Equals(person))
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false;
+        }
+
+        private bool IsDogDouble(ListBox.ObjectCollection list, Dog newDog)
+        {
+            foreach (var item in list)
+            {
+                Dog dog = item as Dog;
+                if (dog != null)
+                {
+                    if (newDog.Equals(dog))
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false;
+        }
+
+        private void CmdBuy_Click(object sender, EventArgs e)
+        {
+            var selectedPerson = LstPerson.SelectedItem as Person;
+            var selectedDog = LstDog.SelectedItem as Dog;
+
+            TxtOutput.Text += $" {selectedPerson.Name} kauft das Tier {selectedDog.Name} \r\n";
+
+        }
+    }
+}

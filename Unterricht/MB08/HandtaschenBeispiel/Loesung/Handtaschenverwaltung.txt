@@ -1,0 +1,23 @@
+public partial class Handtaschenverwaltung : Form
+    {
+        public Handtaschenverwaltung()
+        {
+            InitializeComponent();
+            Controller = new HandbagController();
+        }
+
+        private HandbagController Controller { get; }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            var isAdded = Controller.AddBag(TxtName.Text, Convert.ToInt32(NuDPrice.Value));
+            if (!isAdded)
+            {
+                MessageBox.Show(this, "Die Handtasche wurde bereits erfasst");
+            }
+            else
+            {
+                MessageBox.Show(this, "Die Handtasche wurde erfolgreich erfasst");
+            }
+        }
+    }

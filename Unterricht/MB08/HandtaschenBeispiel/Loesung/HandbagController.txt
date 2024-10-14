@@ -1,0 +1,40 @@
+﻿using System.Xml.Linq;
+
+namespace MB08.HandtaschenBeispiel.Loesung
+{
+    public class HandbagController
+    {
+
+        public HandbagController()
+        {
+            Bags = new List<Handbag>();
+        }
+
+        private List<Handbag> Bags { get; set; }
+
+
+        public bool AddBag(string name, int price)
+        {
+            var bag = new Handbag(name, price);
+            var isBagAlreadyCaptured = IsBagAlreadyCaptured(bag);
+            if (!isBagAlreadyCaptured)
+            {
+                Bags.Add(bag);
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsBagAlreadyCaptured(Handbag bag)
+        {
+            foreach (var item in Bags)
+            {
+                if (item.Equals(bag))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+}

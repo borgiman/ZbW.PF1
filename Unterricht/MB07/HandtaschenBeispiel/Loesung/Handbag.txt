@@ -1,0 +1,28 @@
+﻿namespace MB07.HandtaschenBeispiel.Loesung
+{
+    public class Handbag
+    {
+
+        public Handbag(string name, int price)
+        {
+            Name = name;
+            Price = price;
+        }
+
+		public List<Handbag> Bags { get; set; }
+
+        public int Price { get; set; }
+
+        public string Name { get; set; }
+
+        public bool Equals(Handbag other)
+        {
+            if (other == null) { return false; }
+            if (other.Name == this.Name && other.Price == this.Price)
+            {
+                return true;
+            }
+            return false;
+        }
+	}
+}

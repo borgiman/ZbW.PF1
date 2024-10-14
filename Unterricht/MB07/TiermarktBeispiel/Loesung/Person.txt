@@ -1,0 +1,17 @@
+﻿namespace MB07.TiermarktBeispiel
+{
+    public class Person
+    {
+        public string Name { get; set; }
+
+        public bool Equals(Person other)
+        {
+            if (other == null) return false;
+            if (Name == other.Name)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+}

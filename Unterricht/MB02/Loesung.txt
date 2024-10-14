@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MB02
+{
+    internal class Loesung
+    {
+        private Day _selectedDay;
+        private const double _normalPrice = 0.15;
+        private const double _specialPrice = 0.10;
+
+
+        private void Rad_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (RadMonday.Checked)
+            {
+                _selectedDay = Day.Monday;
+            }
+            else if (RadTuesday.Checked)
+            {
+                _selectedDay = Day.Tuesday;
+            }
+            else if (RadWednesday.Checked)
+            {
+                _selectedDay = Day.Wednesday;
+            }
+            else if (RadThursday.Checked)
+            {
+                _selectedDay = Day.Thursday;
+            }
+            else if (RadFriday.Checked)
+            {
+                _selectedDay = Day.Friday;
+            }
+            else if (RadSaturday.Checked)
+            {
+                _selectedDay = Day.Saturday;
+            }
+            else if (RadSunday.Checked)
+            {
+                _selectedDay = Day.Sunday;
+            }
+        }
+
+        private void CmdCalc_Click(object sender, EventArgs e)
+        {
+            double result = 0;
+            double numKWh = (double)NumKWh.Value;
+
+            if (ChkHoliday.Checked || (_selectedDay == Day.Saturday || _selectedDay == Day.Sunday))
+            {
+                result = numKWh  * _specialPrice;
+                LblShow.BackColor = Color.Green;
+            }
+            else
+            {
+                result = numKWh  * _normalPrice;
+                LblShow.BackColor = Color.Red;
+            }
+
+            LblShow.Text = $"{numKWh} kWh kosten {result} Fr.";
+
+        }
+
+        private void NumKWh_ValueChanged(object sender, EventArgs e)
+        {
+            var num = (NumericUpDown)sender;
+            TrkKWh.Value =  (int)num.Value;
+        }
+
+        private void TrkKWh_Scroll(object sender, EventArgs e)
+        {
+            var trackBar = (TrackBar)sender;
+            NumKWh.Value = trackBar.Value;
+        }
+    }
+
+    public enum Day
+    {
+        Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4,
+        Friday = 5, Saturday = 6, Sunday = 7
+    }
+}

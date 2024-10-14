@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MB03.Schleifen
+{
+    internal class Loesung_SchleifenDemo
+    {
+        private const int Length = 5;
+        private Random random = new Random();
+
+        private void CmdFor_Click(object sender, EventArgs e)
+        {
+            TxtShow.Text = string.Empty;
+
+            for (int i = 0; i < Length; i++)
+            {
+                int num = random.Next(1, 1000);
+                TxtShow.Text += num.ToString() + "\r\n";
+            }
+        }
+
+        private void CmdWhile_Click(object sender, EventArgs e)
+        {
+            TxtShow.Text = string.Empty;
+
+            int count = 0;
+            while (count < Length)
+            {
+                int num = random.Next(1, 1000);
+                TxtShow.Text += num.ToString() + "\r\n";
+                count++;
+            }
+        }
+
+        private void CmdDoWhile_Click(object sender, EventArgs e)
+        {
+            TxtShow.Text = string.Empty;
+
+            int count = 0;
+            do
+            {
+                int num = random.Next(1, 1000);
+                TxtShow.Text += num.ToString() + "\r\n";
+                count++;
+            }
+            while (count < Length);
+
+        }
+    }
+}
